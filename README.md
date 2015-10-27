@@ -1,6 +1,30 @@
 QtTwitter
 ==========
 
+How to use for iOS platform
+==========
+## Prepare Twitter SDK for iOS
+
+Unfortunately, the official instruction for installing Twitter SDK required the use of Fabric.app and a custom modification of your XCode project. This process it's not suitable for Qt applications where the Xcode project is part of the building process.
+A workaround is to passing via CocoaPods using a fake Xcode project:
+
+* Create a directory "CocoaPods"
+* Create inside this directory an Xcode project "Empty" (just autogenerate a single view iOS project with Xcode and save here)
+* Create a file "Podfile" with the following content:
+```
+xcodeproj 'Empty/Empty'
+
+pod 'Fabric', '~> 1.5.5'
+pod 'TwitterCore', '~> 1.12.0'
+pod 'TwitterKit', '~> 1.12'
+```
+* run "pod install"
+
+At this stage, inside the "CocoaPods" there will be a directory "Pods" with all Frameworks necessary to use the TwitterKit.
+It remains to use them into your .pro adding the following lines:
+```
+
+
 How to use for Android platform
 ==========
 ## Prepare Twitter SDK for Android
