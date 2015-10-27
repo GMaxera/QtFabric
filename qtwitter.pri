@@ -11,9 +11,9 @@ android {
 	QT += androidextras
 	SOURCES += $$PWD/qtwitter_android.cpp
 
-	JAVASRC.path = /src/com/redberry/qtwitter
-	JAVASRC.files += $$files($$PWD/Android/src/org/gmaxera/qtfacebook/*)
-	INSTALLS += JAVASRC
+	QTWITTER_JAVASRC.path = /src/com/redberrydigital/qtwitter
+	QTWITTER_JAVASRC.files += $$PWD/QTwitterBinding.java
+	INSTALLS += QTWITTER_JAVASRC
 } else:ios {
 	## the objective sources should be put in this variable
 	OBJECTIVE_SOURCES += \
@@ -21,5 +21,6 @@ android {
 }
 
 OTHER_FILES += \
+	$$PWD/QTwitterBinding.java \
 	$$PWD/README.md
 
