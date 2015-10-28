@@ -18,12 +18,36 @@ pod 'Fabric', '~> 1.5.5'
 pod 'TwitterCore', '~> 1.12.0'
 pod 'TwitterKit', '~> 1.12'
 ```
-* run "pod install"
-
-At this stage, inside the "CocoaPods" there will be a directory "Pods" with all Frameworks necessary to use the TwitterKit.
-It remains to use them into your .pro adding the following lines:
+* run "pod install"; and inside the "CocoaPods" there will be a directory "Pods" with all Frameworks necessary to use the TwitterKit.
+* into your .pro adding the following lines to include QTwitter:
 ```
-
+FABRIC_APIKEY = yourFabricApiKey
+FABRIC_APISECRET = yourFabricApiSecret
+FABRIC_FRAMEWORKS_ROOT = /Path/to/CocoaPods/Pods
+include(/Path/to/repos/redberry-qt-qtwitter/qtwitter.pri)
+```
+* finally, add into Info.plist of your iOS app the Api keys:
+```
+<key>Fabric</key>
+<dict>
+	<key>APIKey</key>
+	<string>yourFabricApiKey</string>
+	<key>Kits</key>
+	<array>
+		<dict>
+			<key>KitName</key>
+			<string>Twitter</string>
+			<key>KitInfo</key>
+			<dict>
+				<key>consumerKey</key>
+				<string>twitterConsumerKeyFromTheFabricDashboard</string>
+				<key>consumerSecret</key>
+				<string>twitterConsumerSecretFromTheFabricDashboard</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+```
 
 How to use for Android platform
 ==========
