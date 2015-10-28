@@ -21,6 +21,10 @@ QTwitter::~QTwitter() {
 	// nothing to do
 }
 
+void QTwitter::setQuickView( QQuickView* mainView ) {
+	this->mainView = mainView;
+}
+
 QString QTwitter::getConsumerKey() {
 	return consumerKey;
 }

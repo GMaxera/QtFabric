@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QtQml>
 
+class QQuickView;
+
 /*! QTwitter object allow to access a various functionality of Twitter SDK
  *  in a simpler way and on different platform with the same interface.
  *
@@ -20,6 +22,11 @@ public:
 	static QObject* qTwitterProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
 	/*! singleton object provider for C++ */
 	static QTwitter* instance();
+	/*! set the QML view used by the app
+	 *  This is mainly used on iOS platform to find the correct ViewController where to show
+	 *  additional native views
+	 */
+	void setQuickView( QQuickView* mainView );
 public slots:
 	//! return the current consumerKey in use
 	QString getConsumerKey();
@@ -46,6 +53,8 @@ private:
 
 	QString consumerKey;
 	QString consumerSecret;
+
+	QQuickView* mainView;
 };
 
 #endif
